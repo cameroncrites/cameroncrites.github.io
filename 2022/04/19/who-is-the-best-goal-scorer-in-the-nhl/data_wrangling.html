@@ -1,0 +1,105 @@
+
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
+## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(gt)
+library(cowplot)
+
+hockeydata &lt;- read_csv(&quot;data/hockeydata.csv&quot;)</code></pre>
+<pre><code>## New names:
+## • `` -&gt; `...1`
+## • `` -&gt; `...2`
+## • `` -&gt; `...3`
+## • `` -&gt; `...4`
+## • `` -&gt; `...5`
+## • `` -&gt; `...6`
+## • `` -&gt; `...8`
+## • `` -&gt; `...9`
+## • `` -&gt; `...10`
+## • `` -&gt; `...11`
+## • `` -&gt; `...12`
+## • `` -&gt; `...13`
+## • `` -&gt; `...15`
+## • `` -&gt; `...16`
+## • `` -&gt; `...18`
+## • `` -&gt; `...19`
+## • `` -&gt; `...21`
+## • `` -&gt; `...23`
+## • `` -&gt; `...24`
+## • `` -&gt; `...25`
+## • `` -&gt; `...26`
+## • `` -&gt; `...27`
+## • `` -&gt; `...28`</code></pre>
+<pre><code>## Rows: 21 Columns: 28
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (28): ...1, ...2, ...3, ...4, ...5, ...6, Scoring, ...8, ...9, ...10, .....
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>hockey &lt;-
+  hockeydata %&gt;% rename(
+    Rank = ...1,
+    Player = ...2,
+    Age = ...3,
+    Team = ...4,
+    Pos =...5,
+    GP = ...6,
+    Goals = Scoring,
+    Assists = ...8,
+    PTS = ...9,
+    PlusMinus = ...10,
+    PIM = ...11,
+    PS = ...12,
+    EV = ...13,
+    PPG = &quot;Special Teams&quot;,
+    SHG = ...15,
+    GWG = ...16,
+    EVA = Assists,
+    PPA = ...18,
+    SHA = ...19,
+    ShotsOnGoal = &quot;Shot Data&quot;,
+    ShootingPercentage = ...21,
+    TOI = &quot;Ice Time&quot;,
+    ATOI = ...23,
+    BLK = ...24,
+    Hits = ...25,
+    FOW = ...26,
+    FOL = ...27,
+    FOPercentage = ...28)
+
+hockeystats &lt;- hockey %&gt;% filter(Rank != &quot;Rk&quot;) %&gt;%
+  mutate(GP = as.numeric(GP),
+         Goals = as.numeric(Goals),
+         Assists = as.numeric(Assists),
+         PTS = as.numeric(PTS),
+         PlusMinus = as.numeric(PlusMinus),
+         PIM = as.numeric(PIM),
+         PS = as.numeric(PS),
+         EV = as.numeric(EV),
+         PPG = as.numeric(PPG),
+         SHG = as.numeric(SHG),
+         GWG = as.numeric(GWG),
+         EVA = as.numeric(EVA),
+         PPA = as.numeric(PPA),
+         SHA = as.numeric(SHA),
+         ShotsOnGoal = as.numeric(ShotsOnGoal),
+         ShootingPercentage = as.numeric(ShootingPercentage),
+         TOI = as.numeric(TOI),
+         ATOI = as.numeric(ATOI),
+         BLK = as.numeric(BLK),
+         Hits = as.numeric(Hits),
+         FOW = as.numeric(FOW),
+         FOL = as.numeric(FOL),
+         FOPercentage = as.numeric(FOPercentage)
+         )</code></pre>
+<pre><code>## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion</code></pre>
+<pre class="r"><code>write_csv(hockeystats,&quot;data/goals.csv&quot;)</code></pre>
