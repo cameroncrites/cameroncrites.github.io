@@ -258,47 +258,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    opponent_score <span class="sc">&gt;</span> team_score <span class="sc">~</span> <span class="st">"L"</span></span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>))) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gameswithsides<span class="sc">$</span>team_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "L" "W"</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gameswithsides<span class="sc">$</span>team_result <span class="ot">&lt;-</span> <span class="fu">relevel</span>(gameswithsides<span class="sc">$</span>team_result, <span class="at">ref=</span><span class="st">"W"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gameswithsides<span class="sc">$</span>team_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "W" "L"</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>modelgames <span class="ot">&lt;-</span> gameswithsides <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    game_id, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    game_date, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    team_short_display_name, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    opponent_short_display_name, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    season, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    team_rolling_ppp, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_ppp, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    team_rolling_atr,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_atr,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    team_rolling_effective_fga,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_effective_fga,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    team_cumulative_ppp,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    opponent_cumulative_ppp,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    team_rolling_ftr,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_ftr,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    team_rolling_made_ftr,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_made_ftr,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    team_result</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>gameswithsides<span class="sc">$</span>team_result <span class="ot">&lt;-</span> <span class="fu">relevel</span>(gameswithsides<span class="sc">$</span>team_result, <span class="at">ref=</span><span class="st">"W"</span>)</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>modelgames <span class="ot">&lt;-</span> gameswithsides <span class="sc">%&gt;%</span> </span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    game_id, </span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    game_date, </span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    team_short_display_name, </span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    opponent_short_display_name, </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    season, </span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    team_rolling_ppp, </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_ppp, </span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    team_rolling_atr,</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_atr,</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    team_rolling_effective_fga,</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_effective_fga,</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    team_cumulative_ppp,</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    opponent_cumulative_ppp,</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    team_rolling_ftr,</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_ftr,</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    team_rolling_made_ftr,</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    opponent_rolling_made_ftr,</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    team_result</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>College basketball can be looked at in many different ways…</p>
-<p>Some use advanced data to analyze the “ins” and “outs” of the game, some stick to the “eye test” to determine how to predict contests.</p>
+<p>Some use advanced data to analyze the “ins” and “outs” of the game, while some stick to the “eye test” to determine how to predict contests.</p>
 <p>This year for the NCAA Tournament, I decided to go the advanced analytics route to try and use machine learning to help me predict March Madness. With that being said, I wanted to emphasize a part of the game that I’ve always felt separate the “good” teams from the “great teams.”</p>
 <p>Efficiency.</p>
 <p>Yes, efficiency has always been the clear difference maker in my eyes to tell how well a team will do in the tournament. If you can protect the ball and shoot at an efficient percentage, you should set yourself up for success. This being because of course you’re making the most out of every possession. Something that only the “great” teams can do.The specific stats I chose to emphasize efficiency are ones that I felt had a great impact on the game.</p>
@@ -307,14 +293,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_ppp, <span class="at">y=</span>opponent_rolling_ppp, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Opponent Rolling Points Per 100 Possessions"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Rolling Points Per 100 Possessions"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title=</span><span class="st">"Does Points Per 100 Possessions Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are scoring high points per 100 possessions while holding the other team</span><span class="sc">\n</span><span class="st">to low points per 100 possessions"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_ppp, <span class="at">y=</span>opponent_rolling_ppp, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Opponent Rolling Points Per 100 Possessions"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Rolling Points Per 100 Possessions"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title=</span><span class="st">"Does Points Per 100 Possessions Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are scoring high points per 100 possessions while holding the other</span><span class="sc">\n</span><span class="st">team to low points per 100 possessions"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
@@ -325,32 +311,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_effective_fga, <span class="at">y=</span>opponent_rolling_effective_fga, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Opponent Rolling Effective FG%"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Rolling Effective FG%"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title=</span><span class="st">"Does Effective FG% Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are shooting at a high Effective Field Goal percentage, while holding</span><span class="sc">\n</span><span class="st">their opponents to a low percentage"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_effective_fga, <span class="at">y=</span>opponent_rolling_effective_fga, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Opponent Rolling Effective FG%"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Rolling Effective FG%"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title=</span><span class="st">"Does Effective FG% Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are shooting at a high Effective Field Goal percentage, while holding</span><span class="sc">\n</span><span class="st">their opponents to a low percentage"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>As seen above, once again an efficiency statistic seems to have a great say in whether a team will win or lose. A high Effective Field Goal Percentage is often resulting in wins, and similar to Points Per 100 Possessions, a split can be seen sown the middle in wins vs.&nbsp;losses.</p>
-<p>The last major statistic used to emphasize efficiency is in this model I ran is Assist/Turnover Ratio, being how many assists you’re recording per times turning over the basketball. Obviously, turnovers are not efficient since that means you’re not getting a shot on the basket, so this stat means a lot for a teams efficiency level every game.</p>
+<p>As seen above, once again an efficiency statistic seems to have a great say in whether a team will win or lose. A high Effective Field Goal Percentage is often resulting in wins, and similar to Points Per 100 Possessions, a split can be seen down the middle in wins vs.&nbsp;losses.</p>
+<p>The last major statistic used to emphasize efficiency in this model is Assist/Turnover Ratio, being how many assists you’re recording per times turning over the basketball. Obviously, turnovers are not efficient since that means you’re not getting a shot on the basket, so this stat means a lot for a teams efficiency level every game.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_atr, <span class="at">y=</span>opponent_rolling_atr, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Opponent Rolling Assist/Turnover Ratio"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Rolling Assist/Turnover Ratio"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">title=</span><span class="st">"Does Assist/Turnover Ratio Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are recording many assists without turning the ball over"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">data=</span>modelgames, <span class="fu">aes</span>(<span class="at">x=</span>team_rolling_atr, <span class="at">y=</span>opponent_rolling_atr, <span class="at">color=</span>team_result)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Opponent Rolling Assist/Turnover Ratio"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Team Rolling Assist/Turnover Ratio"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">title=</span><span class="st">"Does Assist/Turnover Ratio Matter?"</span>, <span class="at">subtitle=</span><span class="st">"Most teams that win games are recording many assists without turning the ball over"</span>, <span class="at">caption=</span><span class="st">"Source: Sports Reference | By Cameron Crites"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -359,7 +345,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Once again, we see a disparity between teams winning and losing games based on if they’re being efficient, with this case being assisting on a basket vs.&nbsp;turning the ball over. Although this graph may not be as consistent as the other statistical measurements, there’s not doubt it could still be useful in the model ran.</p>
 <p>So with all of this being said, how did the model run? Did the efficiency categories we determined to be important help predict who would win in the NCAA Tournament?</p>
 <p>Not really.</p>
-<p>Attached below is photos of what my efficiency model predicted. <img src="../../Users/cameroncrites/Desktop/School/Spring 2022/Sports Data/QuartoBlog/posts/ncaa-brackets-with-machine-learning/south.png" class="img-fluid" alt="East Bracket"> Yikes. Doesn’t look great, I know. However, there are some positive takeaways from this!</p>
+<p>Attached below is photos of what my efficiency model predicted.</p>
+<p><img src="south.png" class="img-fluid" style="width:49.0%"> <img src="midwest.png" class="img-fluid" style="width:49.0%"></p>
+<p><img src="east.png" class="img-fluid" style="width:49.0%"><img src="west.png" class="img-fluid" style="width:49.0%"></p>
+<p><img src="finalfour.png" class="img-fluid" style="width:49.0%"></p>
+<p>Yikes. Doesn’t look great, I know. However, there are some positive takeaways from this!</p>
 <p>For one, my model predicted Furman to win the National Championship! Now, obviously they didn’t do that, and in fact, they only won one game, but they did defeat Virginia in a major upset in the first round. And why did they defeat Virginia? Because of a crucial turnover by Virginia in the final seconds to which Furman capitalized. Did my model predict that? Probably not, but it certainly knew about the difference in efficiency between the two teams, which turned out to be the deciding factor as to why Virginia lost.</p>
 <p>So overall, does efficiency matter?</p>
 <p>I would say it does. If you look closely into my bracket there are some games(especially late in the tournament) in which my model made the right choice and efficiency turned out to be a big deal, but ultimately, the main thing I’m missing here is some way of differentiating strength of schedule for teams. A team like Furman could be ultra-efficient because they haven’t played anyone to the level of the teams they played in the tournament, and for those games efficiency may not matter as much when there’s a severe difference in talent.</p>
